@@ -19,7 +19,7 @@ import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -65,16 +65,17 @@ public class FhirServerConfig {
 		try{
 		
 		retVal.setPersistenceUnitName("OMOPonFHIRv1");
-//		retVal.setDataSource(dataSource());
-		retVal.setDataSource(dataSource);
+		retVal.setDataSource(dataSource());
+		//retVal.setDataSource(dataSource);
 		retVal.setPackagesToScan("edu.gatech.chai.omopv6.model.entity");
 		retVal.setPersistenceProvider(new HibernatePersistenceProvider());
 		retVal.setJpaProperties(jpaProperties());
-		return retVal;
-		
+	
+
 		}catch(Exception e){
-			System.out.prntln("Error:"+e);
+			e.printStackTrace();
 		}
+		return retVal;
 	}
 
 	private Properties jpaProperties() {

@@ -19,22 +19,27 @@ jobs:
     - name: Stop docker container if already existing
       id: stop_container
       run:  docker container stop omoponfhir
-      - name: Check on failures
-        if: steps.stop_container.outcome != 'success' 
-          run: echo "Failed to stop container. It may not running already"
+      continue-on-error: true
+    
+    - name: Check on stop_container failures
+      if: steps.stop_container.outcome != 'success' 
+      run: echo "Failed to stop container. It may not running already"
     
     - name: Remove docker container if already existing
       id: remove_container
       run:  docker container rm omoponfhir
-      - name: Check on failures
-        if: steps.remove_container.outcome != 'success' 
-          run: echo "Failed to remove container. It may not exist already"
+      continue-on-error: true
+    
+    - name: Check on remove_container failures
+      if: steps.remove_container.outcome != 'success' 
+      run: echo "Failed to remove container. It may not exist already"
 
     - name: Create Network
       id: create_network
       run:  docker run --name omoponfhir --network=omop -p 8080:8080 -d omoponfhir:latest
       continue-on-error: true
-      - name: Check on failures
-        if: steps.create_network.outcome != 'success' 
-          run: echo "Network might already exists."
+    
+    - name: Check on Network failures
+      if: steps.create_network.outcome != 'success'
+      run: echo "Network might already exists."
 

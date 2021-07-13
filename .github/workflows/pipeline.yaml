@@ -21,14 +21,14 @@ jobs:
       run:  docker container stop omoponfhir
       - name: Check on failures
         if: steps.stop_container.outcome != 'success' 
-        run: echo "Failed to stop container. It may not running already"
+          run: echo "Failed to stop container. It may not running already"
     
     - name: Remove docker container if already existing
       id: remove_container
       run:  docker container rm omoponfhir
       - name: Check on failures
         if: steps.remove_container.outcome != 'success' 
-        run: echo "Failed to remove container. It may not exist already"
+          run: echo "Failed to remove container. It may not exist already"
 
     - name: Create Network
       id: create_network
@@ -36,5 +36,5 @@ jobs:
       continue-on-error: true
       - name: Check on failures
         if: steps.create_network.outcome != 'success' 
-        run: echo "Network might already exists."
+          run: echo "Network might already exists."
 

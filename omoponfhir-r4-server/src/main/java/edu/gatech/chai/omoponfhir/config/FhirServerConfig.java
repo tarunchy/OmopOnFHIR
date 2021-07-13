@@ -48,19 +48,22 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class FhirServerConfig {
 	@Autowired
 	DataSource dataSource;
-//	@Bean(destroyMethod = "close")
-//	public DataSource dataSource() {
-//		BasicDataSource retVal = new BasicDataSource();
-//		retVal.setDriver(new org.postgresql.Driver());
-//		retVal.setUrl("jdbc:postgresql://localhost:5432/postgres?currentSchema=omop_v5");
-//		retVal.setUsername("omop_v5");
-//		retVal.setPassword("i3lworks");
-//		return retVal;
-//	}
+	@Bean(destroyMethod = "close")
+	public DataSource dataSource() {
+		BasicDataSource retVal = new BasicDataSource();
+		retVal.setDriver(new org.postgresql.Driver());
+		retVal.setUrl("jdbc:postgresql://localhost:5432/postgres?currentSchema=omop");
+		retVal.setUsername("omop_v6");
+		retVal.setPassword("password");
+		return retVal;
+	}
 
 	@Bean()
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+
 		LocalContainerEntityManagerFactoryBean retVal = new LocalContainerEntityManagerFactoryBean();
+		try{
+		
 		retVal.setPersistenceUnitName("OMOPonFHIRv1");
 //		retVal.setDataSource(dataSource());
 		retVal.setDataSource(dataSource);
@@ -68,6 +71,10 @@ public class FhirServerConfig {
 		retVal.setPersistenceProvider(new HibernatePersistenceProvider());
 		retVal.setJpaProperties(jpaProperties());
 		return retVal;
+		
+		}catch(Exception e){
+			System.out.prntln("Error:"+e);
+		}
 	}
 
 	private Properties jpaProperties() {

@@ -20,11 +20,11 @@ jobs:
     
     - name: Run docker image
       id: run_postgres
-      run:  docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=postgres -d -p 5433:5433 -v $HOME/postgresql/docker_volume:/var/lib/postgresql/data  postgres
+      run:  docker run --name omop_v7 -p 5433:5433 -v $HOME/postgresql/docker_volume:/var/lib/postgresql/data -e POSTGRES_PASSWORD=password -d postgres
       continue-on-error: true
     
     - name: Create Docker Schema
       id: create_container
-      run:  docker exec -it omop_v6 psql -U postgres -c "CREATE DATABASE omop;" -c "\c omop" -c "CREATE SCHEMA results;"
+      run:  docker exec pg-omop_v7 psql -U postgres -c "CREATE DATABASE omop;" -c "\c omop" -c "CREATE SCHEMA results;"
       continue-on-error: true
 

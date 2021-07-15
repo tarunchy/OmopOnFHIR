@@ -1,0 +1,23 @@
+name: Omop_On_FHIR_DB
+env:
+  TAG: 1.0.0
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Pull Postgres docker image
+      id: pull_postgress
+      run:  docker pull postgres 
+    
+    - name: Run docker image
+      id: run_postgres
+      run:  docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=postgres -d -p 5433:5433 -v $HOME/postgresql/docker_volume:/var/lib/postgresql/data  postgres
+      continue-on-error: true
+    
+    - name: Create Docker Schema
+      id: create_container
+      run:  docker exec -it omop_v6 psql -U postgres -c "CREATE DATABASE omop;" -c "\c omop" -c "CREATE SCHEMA results;"
+      continue-on-error: true
+

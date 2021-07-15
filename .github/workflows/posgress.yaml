@@ -1,4 +1,11 @@
 name: Omop_On_FHIR_DB
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Install Database
+        default: v1.0.0
+        required: true
 env:
   TAG: 1.0.0
 jobs:

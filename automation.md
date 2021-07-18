@@ -1,4 +1,11 @@
-# This documents contains detail instruction to automate OmopOnFHIR Project
+### Table of Contents
+**[Overall Solution Architecture](#Overall-Solution-Architecture)**<br>
+**[Hosted Runner Setup](#Hosted-Runner-Setup)**<br>
+**[Partial Automation of DB Setup](#Partial-Automation-of-DB-Setup)**<br>
+**[Add Github repo Secrets](#Add-Github-repo-Secrets)**<br>
+**[Automation of Web application Build and Deployment](#Automation-of-Web-application-Build-and-Deployment)**<br>
+**[End To End Testing](#End-To-End-Testing)**<br>
+**[Demo](#Demo)**<br>
 
 ## Overall Solution Architecture
 

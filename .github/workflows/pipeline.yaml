@@ -36,7 +36,7 @@ jobs:
 
     - name: Create Network
       id: create_network
-      run:  docker run --env SMART_INTROSPECTURL=${{secrets.SMART_INTROSPECTURL}} --env SMART_TOKENSERVERURL=${{secrets.SMART_TOKENSERVERURL}} --env JDBC_PASSWORD=${{secrets.JDBC_PASSWORD}} --env JDBC_USERNAME=${{secrets.JDBC_USERNAME}} --env SERVERBASE_URL=${{secrets.SERVERBASE_URL}} --env SMART_AUTHSERVERURL=${{secrets.SMART_AUTHSERVERURL}} --name omoponfhir --network=omop -p 8080:8080 -d omoponfhir:latest
+      run:  docker run --env JDBC_URL=${{secrets.JDBC_URL}} --env SMART_INTROSPECTURL=${{secrets.SMART_INTROSPECTURL}} --env SMART_TOKENSERVERURL=${{secrets.SMART_TOKENSERVERURL}} --env JDBC_PASSWORD=${{secrets.JDBC_PASSWORD}} --env JDBC_USERNAME=${{secrets.JDBC_USERNAME}} --env SERVERBASE_URL=${{secrets.SERVERBASE_URL}} --env SMART_AUTHSERVERURL=${{secrets.SMART_AUTHSERVERURL}} --name omoponfhir --network=omop -p 8080:8080 -d omoponfhir:latest
       continue-on-error: true
     
     - name: Check on Network failures

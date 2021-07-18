@@ -9,7 +9,7 @@ FROM tomcat:alpine
 #set environment variables below and uncomment the line. Or, you can manually set your environment on your server.
 #ENV JDBC_URL=jdbc:postgresql://<host>:<port>/<database> JDBC_USERNAME=<username> JDBC_PASSWORD=<password>
 
-ENV JDBC_URL=jdbc:postgresql://192.168.86.40:5432/omop JDBC_USERNAME=postgres JDBC_PASSWORD=password SERVERBASE_URL=http://192.168.86.40:8080/omoponfhir4/fhir
+ENV JDBC_URL=jdbc:postgresql://192.168.86.40:5432/omop JDBC_USERNAME=postgres JDBC_PASSWORD=password SERVERBASE_URL=http://192.168.86.40:8080/omoponfhir4/fhir SMART_AUTHSERVERURL=http://192.168.86.40:8080/smart-auth-server SMART_TOKENSERVERURL=http://192.168.86.40:8080/smart-token-server 
 RUN apk update
 RUN apk add zip postgresql-client
 

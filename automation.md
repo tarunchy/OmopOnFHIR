@@ -73,6 +73,15 @@ Please refer to the document for more detail on Data Loading.
 
 ### 2. Execute workflow manullay from Github Action UI in Github.com
 
+## Add Github repo Secrets
+
+Add following evnionment configuration and passwords into Github Sercets. This will vary based on taregt hosting envionment. Java Code and Docker file should not include any sensitive information like db username, password, url etc.
+
+![alt text](add_secret.png)
+
+
+
+
 ## Automation of Web application Build and Deployment
 
 Web Application build and demployment to hosted runner server is fully automated with github action workflow https://github.com/tarunchy/OmopOnFHIR/blob/main/.github/workflows/pipeline.yaml. The workflow gets triggered based push of code to main or master branch or based on pull request approval and merge to main branch. 

@@ -4,11 +4,13 @@
 **[Author](#Author)**<br>
 **[High Overview of scope of work](#High-Overview-of-scope-of-work)**<br>
 **[Overall Solution Architecture](#Overall-Solution-Architecture)**<br>
+**[Prerequsite](#Prerequsite)**<br>
 **[Hosted Runner Setup](#Hosted-Runner-Setup)**<br>
 **[Partial Automation of DB Setup](#Partial-Automation-of-DB-Setup)**<br>
 **[Add Github repo Secrets](#Add-Github-repo-Secrets)**<br>
 **[Automation of Web application Build and Deployment](#Automation-of-Web-application-Build-and-Deployment)**<br>
 **[End To End Testing](#End-To-End-Testing)**<br>
+**[Code](#Code)**<br>
 **[Demo](#Demo)**<br>
 
 ## Author
@@ -43,6 +45,12 @@ This scope here to create CI/CD pipeline for existing OMOP on FHIR Project Java 
 ## Overall Solution Architecture
 
 ![alt text](self-hosted-runner.png)
+
+## Prerequsite
+
+- github.com private Repository or github enterpirse version 3.0 and above
+
+- A unit linux machine which comply requirement for hosted runner mentioned here - <https://docs.github.com/en/enterprise-server@2.22/actions/using-github-hosted-runners/about-github-hosted-runners>
 
 
 ## Hosted Runner Setup
@@ -140,6 +148,13 @@ Note: Runner Host IP information needs to be updated in following files:
 https://github.com/tarunchy/OmopOnFHIR/blob/main/Dockerfile
 
 Both workflow file and Docker files has DB password in plain text which is not recommended. However as DB will be behind the firewall it wont accessable outside. So testing purpose its mentioned here. However developer when working on their own branch needs to change this.
+
+## Code
+
+- https://github.com/tarunchy/OmopOnFHIR
+- https://github.gatech.edu/tchawdhury3/8903_Omop_On_FHIR
+
+The above code is cloned from public repository - https://github.com/omoponfhir/omoponfhir-main created by @myung. The automation setup can only be tested in github version 3.0 and abive where github actions CI/CD workflow is enabled. Current GT enterprise github verion is still in 2.21.6
 
 ## Demo
 

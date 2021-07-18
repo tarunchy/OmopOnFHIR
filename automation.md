@@ -1,6 +1,9 @@
 # This documents contains detail instruction to automate OmopOnFHIR Project
-# Run Count 3
+
 ## Overall Solution Architecture
+
+![alt text](self-hosted-runner.png)
+
 
 ## Hosted Runner Setup
 

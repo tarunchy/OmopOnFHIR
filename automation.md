@@ -1,4 +1,6 @@
-### Table of Contents
+# CI/CD Pipeline Development - OMOP On FHIR Java Stack
+
+## Table of Contents
 **[Overall Solution Architecture](#Overall-Solution-Architecture)**<br>
 **[Hosted Runner Setup](#Hosted-Runner-Setup)**<br>
 **[Partial Automation of DB Setup](#Partial-Automation-of-DB-Setup)**<br>
@@ -6,6 +8,35 @@
 **[Automation of Web application Build and Deployment](#Automation-of-Web-application-Build-and-Deployment)**<br>
 **[End To End Testing](#End-To-End-Testing)**<br>
 **[Demo](#Demo)**<br>
+
+## Author
+
+Tarun Kumar CHawdhury
+Special Problems - CS-8903-D17 - Secondary Project
+
+## High Overview of scope of work
+
+This scope here to create CI/CD pipeline for existing OMOP on FHIR Project Java stack  lead by @myung using GitHub Action events and pipeline. The project here cloned from public repository - https://github.com/omoponfhir/omoponfhir-main  created by @myung. This work has accomplished following key aspects:
+
+- Create higlevel design and solution architecture
+
+- Identify Host Machine and Setup Self-Hosted Runner based on solution Architecture
+
+- Create Github action Workflow for manual trigger event for Postgress DB container
+
+- Trigger Action flow manually and validate DB container correctly started in identified host docker runtime
+
+- Peform Manual steps to create DB Schema and load data with  required Vocabulary
+
+- Add configuration parameters for web container as Github Secrets
+
+- Create Github action workflow for web container CI/CD pipeline
+
+- Commit and Push the code and validate gothub action workflow trigger automatically and started web container in docker runtime in identifed hosted machine
+
+- Validate web container URL is coming properly by inspecting conformance resource
+
+
 
 ## Overall Solution Architecture
 

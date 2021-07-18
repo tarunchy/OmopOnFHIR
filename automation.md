@@ -1,6 +1,8 @@
 # CI/CD Pipeline Development - OMOP On FHIR Java Stack
 
 ## Table of Contents
+**[Author](#Author)**<br>
+**[High Overview of scope of work](#High-Overview-of-scope-of-work)**<br>
 **[Overall Solution Architecture](#Overall-Solution-Architecture)**<br>
 **[Hosted Runner Setup](#Hosted-Runner-Setup)**<br>
 **[Partial Automation of DB Setup](#Partial-Automation-of-DB-Setup)**<br>

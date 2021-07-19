@@ -20,6 +20,6 @@ jobs:
     
     - name: Run docker image
       id: run_postgres
-      run:  docker run --name omop_v6 -p 5432:5432 -e POSTGRES_PASSWORD=password -d postgres
+      run:  docker run --name omop_v6 -p 5432:5432 -e POSTGRES_PASSWORD=${{secrets.JDBC_PASSWORD}} -d ${{secrets.JDBC_USERNAME}}
       continue-on-error: true
 

@@ -128,6 +128,46 @@ Please refer to the document for more detail on Data Loading.
 
 Add following evnionment configuration and passwords into Github Sercets. This will vary based on taregt hosting envionment. Java Code and Docker file should not include any sensitive information like db username, password, url etc.
 
+## Environment Variables
+
+Environment variables are required to be set in order for OMOPonFHIR server to run correctly. The follows are environment variables. If Docker is used, these can be specified in the Dockerfile. If rancher is used for the docker image, the rancher can set the environment variable. If running from Java application server, please refer to the application server setting to add the environment variables.
+
+
+
+SMART_INTROSPECTURL=http://192.168.86.40:8080/omoponfhir4/smart/introspect
+SMART_AUTHSERVERURL=http://192.168.86.40:8080/omoponfhir4/smart/authorize
+SMART_TOKENSERVERURL=http://192.168.86.40:8080/omoponfhir4/smart/token
+AUTH_BEARER=3-kZowbJHRY37tGRuAVMnTeZp_HkuV1qhKlZu48k
+AUTH_BASIC=tarunchy:Alu123alu
+FHIR_READONLY=False
+
+
+
+- JDBC_PASSWORD="dbpassword"
+- JDBC_USERNAME="dbusername"
+- JDBC_URL="jdbc:..."
+- SMART_INTROSPECTURL="http://[your_omoponfhir_host]/smart/introspect"
+- SMART_AUTHSERVERURL="http://[your_omoponfhir_host]/smart/authorize"
+- SMART_TOKENSERVERURL="http://[your_omoponfhir_host]/smart/token"
+- AUTH_BEARER="static bearer token that you want to use. this has full access scope *.* of smart on fhir"
+- AUTH_BASIC="your_username:your_secret"
+- FHIR_READONLY="True or False"
+- SERVERBASE_URL="base URL if you are behind proxy. If this is not set then local hostname will be used"
+- (optional) LOCAL_CODEMAPPING_FILE_PATH="if you want to load local code mapping to OMOP concept table. Put path to file here"
+- MEDICATION_TYPE="Applied to MedicationRequest only. Set to 'local' if you want medication to be in contained. set to 'link' if you want to use Reference link to Medicaiton resource. Set this to empty string or do not include in env variable to use CodeableConcept"
+
+### Application URLs
+
+
+- TestPage UI - http://<my_host>:8080/omoponfhir4/
+
+- API - <http://<my_host>:8080/omoponfhir4/fhir>
+
+- SMART on FHIR - <http://<my_host>:8080/omoponfhir4/smart/>
+
+### Additional Information
+
+Status: Details available in <http://omoponfhir.org/>
 ![alt text](add_secret.png)
 
 

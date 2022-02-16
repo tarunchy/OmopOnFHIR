@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Install Database
+        description: Scorecards supply-chain security
         default: v1.0.0
         required: true
 
